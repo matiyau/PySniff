@@ -19,7 +19,7 @@ def _install_dep(pkg_name):
 
 
 def _create_log_dir():
-    os.system("mkdir -p \"" + os.path.join(_SCRIPT_DIR, "logs") + "\"")
+    os.system("mkdir -p \"" + os.path.join(_SCRIPT_DIR, "../logs") + "\"")
 
 
 def _get_iw_devs():

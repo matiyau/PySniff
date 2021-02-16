@@ -25,7 +25,7 @@ class IF():
     def _generate_log_path(self):
         file_name = self.if_name + "_" + \
             datetime.today().strftime("%Y%m%d_%H%M%S")
-        return os.path.join(_SCRIPT_DIR, "logs/" + file_name)
+        return os.path.join(_SCRIPT_DIR, "../logs/" + file_name)
 
     def start(self):
         self._cfg()
