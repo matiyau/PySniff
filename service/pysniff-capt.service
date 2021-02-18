@@ -1,0 +1,17 @@
+[Unit]
+Description=PySniff Capture Service
+After=multi-user.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/lib/pysniff/capture.py
+Restart=always
+User=n7
+Group=n7
+User=n7
+Group=sudo
+User=n7
+Group=n7
