@@ -8,6 +8,7 @@ Created on Tue Feb 16 19:13:27 2021
 
 import os
 _SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+def_path = ""
 
 
 def _install_dep(pkg_name):
@@ -28,15 +29,18 @@ def _install_dep(pkg_name):
         print(pkg_name + " OK")
 
 
-def _create_log_dir():
+def _create_log_dir(logs_dir_path):
     """
-    Create a directory to store logs, if not already present
+    Create the specified directory to store logs, if not already present
+
+    Args:
+        logs_dir_path (str): Path of the directory to store logs.
 
     Returns:
         None.
 
     """
-    os.system("mkdir -p \"" + os.path.join(_SCRIPT_DIR, "../logs") + "\"")
+    os.system("mkdir -p \"" + logs_dir_path + "\"")
 
 
 def _get_iw_devs():
@@ -100,18 +104,30 @@ def _get_monitor_compatible_ifs():
     return monitor_if_names
 
 
-def check():
+def check(logs_dir_path=None):
     """
-    Checks if necessary dependencies are met, installs missing packages and
-    selects an interface for sniffing.
+
+    Check if necessary dependencies are met, install missing packages and
+    select an interface for sniffing.
+
+    Args:
+        logs_dir_path (str, optional): Path of the directory to store logs.
+        If None, the default path (USER_HOME/pysniff_logs) is used.
+        Defaults to None.
 
     Raises:
         RuntimeError: If no monitor-capable interface is found.
 
     Returns:
         str: Name of the interface selected for sniffing.
+        logs_dir_path (str): Path of the logs directory.
+        If a custom path is supplied to the function,
+        the same path is returned.
+        If not supplied, the default path is returned.
 
     """
+    if logs_dir_path is None:
+        logs_dir_path = os.path.join(os.path.expanduser("~"), "pysniff_logs")
     _install_dep("net-tools")
     _install_dep("wireless-tools")
     _install_dep("iw")
@@ -120,8 +136,8 @@ def check():
         raise RuntimeError(
             "Wireless interface with monitor capability not found")
     else:
-        print("Found interface(s) with monitor cpapbility. Selecting " +
+        print("Found interface(s) with monitor capbility. Selecting " +
               monitor_if_names[0])
     _install_dep("tshark")
-    _create_log_dir()
-    return monitor_if_names[0]
+    _create_log_dir(logs_dir_path)
+    return (monitor_if_names[0], logs_dir_path)
