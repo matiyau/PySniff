@@ -4,10 +4,11 @@ sudo mkdir -p /usr/lib/pysniff
 sudo cp -R "$DIR"/../pysniff /usr/lib/pysniff
 sudo cp -R "$DIR"/../capture.py /usr/lib/pysniff
 
-echo User=$USER >> "$DIR"/pysniff-capt.service
-echo Group=$(id -gn) >> "$DIR"/pysniff-capt.service
+cp "$DIR"/pysniff-capt.service "$DIR"/tmp.service
+echo User=$USER >> "$DIR"/tmp.service
+echo Group=$(id -gn) >> "$DIR"/tmp.service
 
-sudo cp "$DIR"/pysniff-capt.service /lib/systemd/system/
+sudo mv "$DIR"/tmp.service /lib/systemd/system/pysniff-capt.service
 
 sudo systemctl enable pysniff-capt.service
 sudo systemctl start pysniff-capt.service
