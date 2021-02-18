@@ -13,7 +13,8 @@ from pysniff.interface import IF
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Generate Report Page")
+    parser = argparse.ArgumentParser(
+        description="Capture and Log WiFi Packets")
     parser.add_argument("-t", default=0,
                         help="Time limit [in sec] for sniffing "
                         "(Default 0: infinite)")
