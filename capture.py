@@ -36,6 +36,7 @@ class IF():
 
         """
         os.system("sudo ifconfig " + self.if_name + " down")
+        os.system("sudo systemctl stop network-manager")
         os.system("sudo iwconfig " + self.if_name + " mode monitor")
         os.system("sudo ifconfig " + self.if_name + " up")
 
