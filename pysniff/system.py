@@ -8,7 +8,6 @@ Created on Tue Feb 16 19:13:27 2021
 
 import os
 _SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
-def_path = ""
 
 
 def _install_dep(pkg_name):
