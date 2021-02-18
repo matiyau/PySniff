@@ -13,5 +13,4 @@ from capture import IF
 if __name__ == '__main__':
     if_name = system.check()
     interface = IF(if_name)
-    interface._cfg()
     interface.start()

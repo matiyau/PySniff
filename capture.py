@@ -27,7 +27,24 @@ class IF():
         """
         self.if_name = if_name
 
-    def _cfg(self):
+    def _cfg(self, mode):
+        """
+        Configure the interface to operate in the specified mode.
+
+        Args:
+            mode (str): Wireless interface mode.
+
+        Returns:
+            None.
+
+        """
+        os.system("sudo systemctl stop network-manager")
+        os.system("sudo ifconfig " + self.if_name + " down")
+        os.system("sudo iwconfig " + self.if_name + " mode " + mode)
+        os.system("sudo ifconfig " + self.if_name + " up")
+        os.system("sudo systemctl start network-manager")
+
+    def _cfg_monitor(self):
         """
         Configure the interface to operate in monitor mode.
 
@@ -35,10 +52,17 @@ class IF():
             None.
 
         """
-        os.system("sudo ifconfig " + self.if_name + " down")
-        os.system("sudo systemctl stop network-manager")
-        os.system("sudo iwconfig " + self.if_name + " mode monitor")
-        os.system("sudo ifconfig " + self.if_name + " up")
+        self._cfg("monitor")
+
+    def _cfg_managed(self):
+        """
+        Configure the interface to operate in managed mode.
+
+        Returns:
+            None.
+
+        """
+        self._cfg("managed")
 
     def _generate_log_path(self):
         """
@@ -64,7 +88,7 @@ class IF():
             None.
 
         """
-        self._cfg()
+        self._cfg_monitor()
         log_path = self._generate_log_path()
         if (time_sec == 0):
             # Works with timeout 0 also, but Ctrl+C capability is lost when
@@ -74,3 +98,4 @@ class IF():
         elif (time_sec > 0):
             os.system("timeout " + str(time_sec) + " tshark -I -i " +
                       self.if_name + " -w \"" + log_path + "\"")
+        self._cfg_managed()
