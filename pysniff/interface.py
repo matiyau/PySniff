@@ -17,7 +17,7 @@ class IF():
 
         Args:
             if_name (str): Name of the wireless interface.
-            log_dir_path (str): Path of the directory to store logs.
+                log_dir_path (str): Path of the directory to store logs.
 
         Returns:
             None.
@@ -68,7 +68,8 @@ class IF():
         Generate the path for the log file, based on the current timestamp.
 
         Returns:
-            str: Path of the log file.
+            str:
+                Path of the log file.
 
         """
         file_name = self.if_name + "_" + \
@@ -81,7 +82,7 @@ class IF():
 
         Args:
             time_sec (int, optional): Number of seconds for which sniffing
-            should to be done. 0 to run indefinitely. Defaults to 0.
+                should to be done. 0 to run indefinitely. Defaults to 0.
 
         Returns:
             None.

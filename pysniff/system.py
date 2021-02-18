@@ -47,8 +47,9 @@ def _get_iw_devs():
     Get the available wireless devices.
 
     Returns:
-        devs_dict (dict): A dictionary consisting of the phy IDs as the keys
-        and the interface names as the values.
+        dict:
+            A dictionary consisting of the phy IDs as the keys
+            and the interface names as the values.
 
     """
     dev_strs = os.popen("iw dev").read().split("phy#")[1:]
@@ -66,8 +67,9 @@ def _get_iw_modes():
     Get the supported modes of operation for each wireless device.
 
     Returns:
-        modes_dict (dict): A dictionary consisting of the phy IDs as the keys
-        and a list of available modes as the values.
+        dict:
+            A dictionary consisting of the phy IDs as the keys
+            and a list of available modes as the values.
 
     """
     list_strs = os.popen("iw list").read().split("Wiphy phy")[1:]
@@ -90,8 +92,8 @@ def _get_monitor_compatible_ifs():
     Return a list of wireless interfaces that support monitor mode.
 
     Returns:
-        monitor_if_names (list): Names of interfaces which support
-        monitor mode.
+        list:
+            Names of interfaces which support monitor mode.
 
     """
     devs = _get_iw_devs()
@@ -111,18 +113,18 @@ def check(logs_dir_path=None):
 
     Args:
         logs_dir_path (str, optional): Path of the directory to store logs.
-        If None, the default path (USER_HOME/pysniff_logs) is used.
-        Defaults to None.
+            If None, the default path (USER_HOME/pysniff_logs) is used.
+            Defaults to None.
 
     Raises:
         RuntimeError: If no monitor-capable interface is found.
 
     Returns:
-        str: Name of the interface selected for sniffing.
-        logs_dir_path (str): Path of the logs directory.
-        If a custom path is supplied to the function,
-        the same path is returned.
-        If not supplied, the default path is returned.
+        tuple:
+            Tuple containing name of the interface selected for sniffing and
+            path of the logs directory. If a custom path is supplied to the
+            function, the same path is returned. If not supplied,
+            the default path is returned.
 
     """
     if logs_dir_path is None:
