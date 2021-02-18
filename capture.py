@@ -51,9 +51,13 @@ class IF():
             datetime.today().strftime("%Y%m%d_%H%M%S")
         return os.path.join(_SCRIPT_DIR, "../logs/" + file_name)
 
-    def start(self):
+    def start(self, time_sec=0):
         """
         Start sniffing.
+
+        Args:
+            time_sec (int, optional): Number of seconds for which sniffing
+            should to be done. 0 to run indefinitely. Defaults to 0.
 
         Returns:
             None.
@@ -61,4 +65,11 @@ class IF():
         """
         self._cfg()
         log_path = self._generate_log_path()
-        os.system("tshark -I -i " + self.if_name + " -w \"" + log_path + "\"")
+        if (time_sec == 0):
+            # Works with timeout 0 also, but Ctrl+C capability is lost when
+            # timeout is used.
+            os.system("tshark -I -i " + self.if_name + " -w \"" +
+                      log_path + "\"")
+        elif (time_sec > 0):
+            os.system("timeout " + str(time_sec) + " tshark -I -i " +
+                      self.if_name + " -w \"" + log_path + "\"")
