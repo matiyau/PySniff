@@ -3,7 +3,7 @@
 """
 Created on Tue Feb 16 19:13:27 2021
 
-@author: n7
+@author: Nishad Mandlik
 """
 
 import os
