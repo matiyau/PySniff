@@ -93,7 +93,7 @@ class IF():
         if (time_sec == 0):
             # Works with timeout 0 also, but Ctrl+C capability is lost when
             # timeout is used.
-            os.system("tshark -I -i " + self.if_name + " -w \"" +
+            os.system("dumpcap -I -i " + self.if_name + " -w \"" +
                       log_path + "\"")
         elif (time_sec > 0):
             os.system("timeout " + str(time_sec) + " tshark -I -i " +
