@@ -94,8 +94,24 @@ class IF():
             # Works with timeout 0 also, but Ctrl+C capability is lost when
             # timeout is used.
             os.system("dumpcap -I -i " + self.if_name + " -w \"" +
-                      log_path + "\"")
+                      log_path + "\" -f \"not (subtype assoc-resp or \
+                      subtype reassoc-resp or subtype probe-resp or \
+                      subtype beacon or subtype auth or subtype deauth or \
+                      subtype cts or subtype ack or subtype data)\"")
         elif (time_sec > 0):
-            os.system("timeout " + str(time_sec) + " tshark -I -i " +
-                      self.if_name + " -w \"" + log_path + "\"")
+            os.system("timeout " + str(time_sec) + " dumpcap -I -i " +
+                      self.if_name + " -w \"" + log_path + "\" \
+                      -f \"not (subtype assoc-resp or \
+                      subtype reassoc-resp or subtype probe-resp or \
+                      subtype beacon or subtype auth or subtype deauth or \
+                      subtype cts or subtype ack or subtype data)\"")
         self._cfg_managed()
+
+        '''
+        Add these extra filters during display. (not available in pcap syntax)
+
+        ((wlan.fc.type_subtype==40 && !wlan.da==wlan.staa) ||
+         (!wlan.fc.type_subtype==40 && !(wlan.fc.type_subtype==13 ||
+                                         wlan.fc.type_subtype==24 ||
+                                         wlan.fc.type_subtype==25)))
+        '''
