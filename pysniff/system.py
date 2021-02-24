@@ -42,7 +42,7 @@ def _create_log_dir(logs_dir_path):
     os.system("mkdir -p \"" + logs_dir_path + "\"")
 
 
-def _get_iw_devs():
+def get_iw_devs():
     """
     Get the available wireless devices.
 
@@ -96,7 +96,7 @@ def _get_monitor_compatible_ifs():
             Names of interfaces which support monitor mode.
 
     """
-    devs = _get_iw_devs()
+    devs = get_iw_devs()
     modes = _get_iw_modes()
     monitor_if_names = []
     for dev in devs.items():
