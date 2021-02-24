@@ -6,8 +6,10 @@ Created on Tue Feb 16 18:42:40 2021
 @author: Nishad Mandlik
 """
 
-import os
 from datetime import datetime
+import getmac
+import os
+from pysniff import system
 
 
 class IF():
@@ -90,12 +92,40 @@ class IF():
         """
         self._cfg_monitor()
         log_path = self._generate_log_path()
+
+        ifs_filt = "not ("
+        for iface in system.get_iw_devs().items():
+            if_mac = getmac.get_mac_address(interface=iface[1])
+            ifs_filt = ifs_filt + "wlan ra " + if_mac + " or \
+                wlan ta " + if_mac + " or "
+        ifs_filt = ifs_filt[:-4] + ")"
+
+        '''
+        !(wlan.fc.type_subtype==1 || wlan.fc.type_subtype==3 ||
+          wlan.fc.type_subtype==5 || wlan.fc.type_subtype==8 ||
+          wlan.fc.type_subtype==11 || wlan.fc.type_subtype==12 ||
+          wlan.fc.type_subtype==27 || wlan.fc.type_subtype==28 ||
+          wlan.fc.type_subtype==29 || wlan.fc.type_subtype==32)
+        '''
+        filt = " -f \"not (subtype assoc-resp or \
+            subtype reassoc-resp or subtype probe-resp or subtype beacon or \
+            subtype auth or subtype deauth or subtype rts or subtype cts or \
+            subtype ack or subtype data) && " + ifs_filt + "\""
         if (time_sec == 0):
             # Works with timeout 0 also, but Ctrl+C capability is lost when
             # timeout is used.
-            os.system("tshark -I -i " + self.if_name + " -w \"" +
-                      log_path + "\"")
+            os.system("dumpcap -I -i " + self.if_name + " -w \"" +
+                      log_path + "\"" + filt)
         elif (time_sec > 0):
-            os.system("timeout " + str(time_sec) + " tshark -I -i " +
-                      self.if_name + " -w \"" + log_path + "\"")
+            os.system("timeout " + str(time_sec) + " dumpcap -I -i " +
+                      self.if_name + " -w \"" + log_path + "\"" + filt)
         self._cfg_managed()
+
+        '''
+        Add these extra filters during display. (not available in pcap syntax)
+
+        ((wlan.fc.type_subtype==40 && !wlan.da==wlan.staa) ||
+         (!wlan.fc.type_subtype==40 && !(wlan.fc.type_subtype==13 ||
+                                         wlan.fc.type_subtype==24 ||
+                                         wlan.fc.type_subtype==25)))
+        '''
