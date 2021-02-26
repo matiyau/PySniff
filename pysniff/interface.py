@@ -110,7 +110,8 @@ class IF():
         filt = " -f \"not (subtype assoc-resp or \
             subtype reassoc-resp or subtype probe-resp or subtype beacon or \
             subtype auth or subtype deauth or subtype rts or subtype cts or \
-            subtype ack or subtype data) && " + ifs_filt + "\""
+            subtype ack or subtype cf-end or subtype cf-end-ack or \
+            subtype data) && " + ifs_filt + "\""
         if (time_sec == 0):
             # Works with timeout 0 also, but Ctrl+C capability is lost when
             # timeout is used.
