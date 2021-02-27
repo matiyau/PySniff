@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>parse_dump module &mdash; PySniff  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tudelft_fav.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="system module" href="system.html" />
+    <link rel="prev" title="interface module" href="interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009ce3" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PySniff
+          
+
+          
+            
+            <img src="../_static/tudelft_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pysniff</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interface.html">interface module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">parse_dump module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html">system module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">ReadMe</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PySniff</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">pysniff</a> &raquo;</li>
+        
+      <li>parse_dump module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/source/parse_dump.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parse_dump">
+<span id="parse-dump-module"></span><h1>parse_dump module<a class="headerlink" href="#module-parse_dump" title="Permalink to this headline">¶</a></h1>
+<p>Created on Thu Feb 25 22:05:42 2021</p>
+<p>&#64;author: Nishad Mandlik</p>
+<dl class="py class">
+<dt id="parse_dump.Dump">
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">Dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="parse_dump.Dump.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic interface for parsing multiple WireShark capture files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_paths</strong> (<em>list</em>) – List of paths of WireShark capture files. Paths
+should be strings.</p></li>
+<li><p><strong>min_rssi</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum RSSI threshold (in dBm) for
+filtering packets. Packets with RSSI below this value will be
+discarded. Defaults to -70.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="parse_dump.Dump.extract_devices">
+<code class="sig-name descname">extract_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.extract_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract devices from the captured packets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Device parameters extracted from the captured packets.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="parse_dump.Dump.reload">
+<code class="sig-name descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload the packets from the initially specified files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="parse_dump.Dump.set_min_rssi">
+<code class="sig-name descname">set_min_rssi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rssi</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.set_min_rssi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set minimum RSSI for filtering. Updating this value should be followed
+by a call to ‘reload’, to update the filtered packets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rssi</strong> (<em>int</em>) – Minimum RSSI threshold (in dBm) for
+filtering packets. Packets with RSSI below this value will be
+discarded.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="parse_dump.DumpDir">
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpDir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parse_dump.Dump" title="parse_dump.Dump"><code class="xref py py-class docutils literal notranslate"><span class="pre">parse_dump.Dump</span></code></a></p>
+<dl class="py method">
+<dt id="parse_dump.DumpDir.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Interface for parsing WireShark capture files from the same directory.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_path</strong> (<em>str</em>) – Paths of WireShark capture directory.</p></li>
+<li><p><strong>min_rssi</strong> – Minimum RSSI threshold (in dBm) for
+filtering packets. Packets with RSSI below this value will be
+discarded. Defaults to -70.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="parse_dump.DumpDir._get_file_paths">
+<code class="sig-name descname">_get_file_paths</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir._get_file_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of paths of all files present in the initially specified
+capture directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of paths of all files from the capture directory.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="parse_dump.DumpDir.reload">
+<code class="sig-name descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload packets from all files in the intially specified directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="parse_dump.DumpFile">
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parse_dump.Dump" title="parse_dump.Dump"><code class="xref py py-class docutils literal notranslate"><span class="pre">parse_dump.Dump</span></code></a></p>
+<dl class="py method">
+<dt id="parse_dump.DumpFile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Interface for parsing a single WireShark capture files.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Paths of WireShark capture files.</p></li>
+<li><p><strong>min_rssi</strong> – Minimum RSSI threshold (in dBm) for
+filtering packets. Packets with RSSI below this value will be
+discarded. Defaults to -70.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="system.html" class="btn btn-neutral float-right" title="system module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="interface.html" class="btn btn-neutral float-left" title="interface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Koppány Cserna, Nishad Mandlik.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

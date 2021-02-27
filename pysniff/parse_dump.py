@@ -104,13 +104,24 @@ class Dump():
                                        (frame_control & 0b11110000) >> 4]
                 print(str(i), end='\r', flush=True)
                 i = i+1
+            print("")
             del capt
             if os.path.exists(tmp_file):
                 os.remove(tmp_file)
 
     def extract_devices(self):
+        """
+        Extract devices from the captured packets.
+
+        Returns:
+            pandas.DataFrame:
+                Device parameters extracted from the captured packets.
+
+        """
         devs = pd.DataFrame(columns=["MAC", "Vendor",
                                      "Times", "Frame Subtypes"])
+        if (self.packets.empty):
+            return devs
         macs = self.packets["MAC"].unique()
         ML = MacLookup()
         ML.update_vendors()
