@@ -7,17 +7,14 @@ Created on Sat Feb 27 13:48:05 2021
 """
 
 from matplotlib import pyplot as plt
+import numpy as np
+import operator
 import pandas as pd
 
 _COMMON_VENDORS = ["Samsung", "Motorola", "MediaTek", "Huawei", "Apple",
                    "Murata", "Intel", "OnePlus",  "Xiaomi"]
 
 # LG, Sony, Panasonic, Google, RealMe
-
-
-def _pie_labs(pct, allvals):
-    absolute = int(pct/100.*np.sum(allvals))
-    return "{:.1f}%\n({:d} g)".format(pct, absolute)
 
 
 def plot_mac_stats(dfs):
@@ -65,6 +62,10 @@ def plot_mac_stats(dfs):
     fig = plt.figure()  # create a figure object
     ax = fig.add_subplot(1, 1, 1)
     vendor_counts.pop("Unknown", None)
+    other_count = vendor_counts.pop("Other")
+    vendor_counts = dict(sorted(vendor_counts.items(),
+                                key=operator.itemgetter(1), reverse=True))
+    vendor_counts["Other"] = other_count
     mac_stats_labs = ["Randomized", "Vendor Unknown", "Vendor Identified"]
     wedges, texts, autotexts = ax.pie(list(vendor_counts.values()),
                                       labels=list(vendor_counts.keys()),
@@ -80,20 +81,36 @@ def plot_mac_stats(dfs):
     return (devices_count, rand_count, vendor_counts)
 
 
-# fig = plt.figure()  # create a figure object
-# ax = fig.add_subplot(1, 1, 1)
-# ax.hist(times_arr)
-# ax.set_xlabel('Transport Time (ms)', fontsize='18')
-# ax.set_ylabel('Frequency', fontsize='18')
-# ax.set_title('Communication Latency For ' + protocol +
-#              ' [' + label + 'Byte Data]', fontsize='20')
-# # ax.legend(loc='lower right', fontsize=14)
-# ax.tick_params(axis='both', which='major', labelsize=14)
-# ax.tick_params(axis='both', which='minor', labelsize=10)
-# plt.grid(True, which='both')
-# plt.subplots_adjust(top=0.95,
-#                     bottom=0.07,
-#                     left=0.1,
-#                     right=0.98,
-#                     hspace=0.2,
-#                     wspace=0.2)
+def plot_activity(dfs):
+    maj_interval = 180
+    min_interval = 60
+    for (loc, df) in dfs.items():
+        # counts = [0 for i in range(0, 1440)]
+        sample_times = np.array([])
+        for times in df["Times"]:
+            sample_times = np.concatenate([sample_times, times])
+            # for time in times:
+            #     counts[time-1] += 1
+        fig = plt.figure()  # create a figure object
+        ax = fig.add_subplot(1, 1, 1)
+        # ax.plot(range(1, len(counts) + 1), counts)
+        ax.hist(sample_times, bins=np.arange(0, 1441, min_interval))
+        ax.set_xlabel('Time [hh:mm]', fontsize='18')
+        ax.set_ylabel('No. of Devices', fontsize='18')
+        ax.set_title('Device Activity at \n' + loc, fontsize='20')
+        # ax.legend(loc='lower right', fontsize=14)
+        ax.set_xlim(0, 1440)
+        ax.set_xticks([i for i in range(0, 1440, min_interval)
+                       if i % maj_interval], minor=True)
+        ax.set_xticks(np.arange(0, 1440, maj_interval))
+        ax.set_xticklabels(labels=["%02d:00" % i for i in range(0, 24, 3)],
+                           rotation=90)
+        ax.tick_params(axis='both', which='major', labelsize=14)
+        ax.tick_params(axis='both', which='minor', labelsize=10)
+        plt.grid(True, which='both')
+        plt.subplots_adjust(top=0.93,
+                            bottom=0.2,
+                            left=0.11,
+                            right=0.98,
+                            hspace=0.2,
+                            wspace=0.2)
