@@ -18,6 +18,20 @@ _COMMON_VENDORS = ["Samsung", "Motorola", "MediaTek", "Huawei", "Apple",
 
 
 def plot_mac_stats(dfs):
+    """
+    Plot pie-charts of randomization percentages and vendor share among all
+    MAC addresses from all supplied dataframes
+
+    Args:
+        dfs (list): Dataframes of device details.
+
+    Returns:
+        (tuple): Contains the following stats:
+            devices_count (int): Total number of detected devices.
+            rand_count (int): Number of devices with randomized MAC addresses.
+            vendor_counts (dict): Number of devices of each vendor.
+
+    """
     if (type(dfs) is pd.DataFrame):
         dfs = [dfs]
     devices_count = 0
@@ -82,17 +96,28 @@ def plot_mac_stats(dfs):
 
 
 def plot_activity(dfs):
+    """
+    Plot crowd activity stats for each dataframe present in the dictionary.
+    Activity is shown as a histogram of number of devices present at the
+    location in a particular 30 minute interval.
+
+    Args:
+        dfs (dict): Dataframes of device details.
+            Dictionary keys are strings specifying the file name. Their
+            corresponding values are of type 'pandas.DataFrame'.
+
+    Returns:
+        None.
+
+    """
     maj_interval = 180
     min_interval = 30
     for (loc, df) in dfs.items():
-        # counts = [0 for i in range(0, 1440)]
         sample_times = np.array([])
         for times in df["Times"]:
             sample_times = np.concatenate([sample_times,
                                            np.unique(times -
                                                      times % min_interval)])
-            # for time in times:
-            #     counts[time-1] += 1
         fig = plt.figure()  # create a figure object
         ax = fig.add_subplot(1, 1, 1)
         # ax.plot(range(1, len(counts) + 1), counts)
@@ -107,7 +132,6 @@ def plot_activity(dfs):
         ax.set_xticks(np.arange(0, 1440, maj_interval))
         ax.set_xticklabels(labels=["%02d:00" % i for i in range(0, 24, 3)],
                            rotation=90)
-        # ax.set_yticklabels([str(round(i/60, 2)) for i in ax.get_yticks()])
         ax.tick_params(axis='both', which='major', labelsize=14)
         ax.tick_params(axis='both', which='minor', labelsize=10)
         plt.grid(True, which='both')
@@ -117,3 +141,7 @@ def plot_activity(dfs):
                             right=0.98,
                             hspace=0.2,
                             wspace=0.2)
+
+
+def plot_request_subtypes(dfs):
+    pass
