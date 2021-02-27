@@ -101,7 +101,6 @@ def pcap_dir_to_pickle(in_dir_path, out_file_path=None, out_dir_path=None,
         os.system("mkdir -p '" + os.path.split(out_file_path)[0] + "'")
         print("Reading pcap(s)...")
         DD = DumpDir(path)
-        print(DD.packets)
         print("Extracting Devices ...")
         devs = DD.extract_devices()
         if not devs.empty:
