@@ -20,7 +20,7 @@ _COMMON_VENDORS = ["Samsung", "Motorola", "MediaTek", "Huawei", "Apple",
 def plot_mac_stats(dfs):
     """
     Plot pie-charts of randomization percentages and vendor share among all
-    MAC addresses from all supplied dataframes
+    MAC addresses from all supplied dataframes.
 
     Args:
         dfs (list): Dataframes of device details.
@@ -28,9 +28,9 @@ def plot_mac_stats(dfs):
     Returns:
         tuple:
             Contains the following stats:
-                devices_count (int): Total number of detected devices.
-                rand_count (int): Number of devices with randomized MAC addresses.
-                vendor_counts (dict): Number of devices of each vendor.
+            devices_count (int): Total number of detected devices.
+            rand_count (int): Number of devices with randomized MAC addresses.
+            vendor_counts (dict): Number of devices of each vendor.
 
     """
     if (type(dfs) is pd.DataFrame):
