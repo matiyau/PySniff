@@ -234,8 +234,30 @@ output pickle file should be stored. Defaults to None.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="utils.pickle_to_df">
-<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">pickle_to_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pickle_file_path</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/utils.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.pickle_to_df" title="Permalink to this definition">¶</a></dt>
+<dt id="utils.pickle_dir_to_dfs">
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">pickle_dir_to_dfs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pickle_dir_path</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/utils.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.pickle_dir_to_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a dataframes from all pickle files in a directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pickle_dir_path</strong> (<em>str</em>) – Path of the directory containing the pickle</p></li>
+<li><p><strong>files.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dataframes of device details from all pickle files.
+Dictionary keys are strings specifying the file name. Their
+corresponding values are of type ‘pandas.DataFrame’</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="utils.pickle_file_to_df">
+<code class="sig-prename descclassname">utils.</code><code class="sig-name descname">pickle_file_to_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pickle_file_path</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/utils.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.pickle_file_to_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a dataframe from a pickle file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
