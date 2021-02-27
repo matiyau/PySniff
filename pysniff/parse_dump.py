@@ -127,8 +127,8 @@ class Dump():
         ML.update_vendors()
         for mac in macs:
             frames = self.packets.loc[self.packets["MAC"] == mac]
-            if (mac[4] == "2" or mac[4] == "6" or mac[4] == "a" or
-                    mac[4] == "e" or mac[4] == "A" or mac[4] == "E"):
+            if (mac[1] == "2" or mac[1] == "6" or mac[1] == "a" or
+                    mac[1] == "e" or mac[1] == "A" or mac[1] == "E"):
                 vendor = "Randomized"
             else:
                 try:
