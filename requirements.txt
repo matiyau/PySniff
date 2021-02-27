@@ -1,0 +1,3 @@
+get_mac==0.8.2
+pygit2==1.5.0
+getmac==0.8.2

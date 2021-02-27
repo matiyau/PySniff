@@ -15,11 +15,11 @@ from pysniff import system
 class IF():
     def __init__(self, if_name, log_dir_path):
         """
-        Class for the interface which is ot be used for sniffing.
+        Class for the interface which is to be used for sniffing.
 
         Args:
             if_name (str): Name of the wireless interface.
-                log_dir_path (str): Path of the directory to store logs.
+            log_dir_path (str): Path of the directory to store logs.
 
         Returns:
             None.
@@ -110,7 +110,8 @@ class IF():
         filt = " -f \"not (subtype assoc-resp or \
             subtype reassoc-resp or subtype probe-resp or subtype beacon or \
             subtype auth or subtype deauth or subtype rts or subtype cts or \
-            subtype ack or subtype data) && " + ifs_filt + "\""
+            subtype ack or subtype cf-end or subtype cf-end-ack or \
+            subtype data) && " + ifs_filt + "\""
         if (time_sec == 0):
             # Works with timeout 0 also, but Ctrl+C capability is lost when
             # timeout is used.

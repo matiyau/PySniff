@@ -30,7 +30,8 @@ author = 'Koppány Cserna, Nishad Mandlik'
 # -- General configuration ---------------------------------------------------
 
 # Linking to Source Code
-branch = Repository(os.path.join(_SCRIPT_DIR, "../")).head.shorthand
+# branch = Repository(os.path.join(_SCRIPT_DIR, "../")).head.shorthand
+branch = "master"
 
 
 def linkcode_resolve(domain, info):
