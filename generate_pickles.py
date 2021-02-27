@@ -11,5 +11,3 @@ import nest_asyncio
 
 nest_asyncio.apply()
 pu.pcap_dir_to_pickle("./logs/pcap", out_dir_path="./logs/pickle")
-
-# dfs = pu.pickle_dir_to_dfs("./logs/pickle")
