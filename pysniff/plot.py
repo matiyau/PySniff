@@ -26,10 +26,11 @@ def plot_mac_stats(dfs):
         dfs (list): Dataframes of device details.
 
     Returns:
-        (tuple): Contains the following stats:
-            devices_count (int): Total number of detected devices.
-            rand_count (int): Number of devices with randomized MAC addresses.
-            vendor_counts (dict): Number of devices of each vendor.
+        tuple:
+            Contains the following stats:
+                devices_count (int): Total number of detected devices.
+                rand_count (int): Number of devices with randomized MAC addresses.
+                vendor_counts (dict): Number of devices of each vendor.
 
     """
     if (type(dfs) is pd.DataFrame):
