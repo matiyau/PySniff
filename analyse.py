@@ -11,3 +11,5 @@ import pysniff.plot as pp
 
 dfs = pu.pickle_dir_to_dfs("./logs/pickle")
 tot, rand, ven = pp.plot_mac_stats([df[1] for df in dfs.items()])
+
+pp.plot_activity(dfs)

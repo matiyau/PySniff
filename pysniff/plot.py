@@ -83,12 +83,14 @@ def plot_mac_stats(dfs):
 
 def plot_activity(dfs):
     maj_interval = 180
-    min_interval = 60
+    min_interval = 30
     for (loc, df) in dfs.items():
         # counts = [0 for i in range(0, 1440)]
         sample_times = np.array([])
         for times in df["Times"]:
-            sample_times = np.concatenate([sample_times, times])
+            sample_times = np.concatenate([sample_times,
+                                           np.unique(times -
+                                                     times % min_interval)])
             # for time in times:
             #     counts[time-1] += 1
         fig = plt.figure()  # create a figure object
@@ -105,6 +107,7 @@ def plot_activity(dfs):
         ax.set_xticks(np.arange(0, 1440, maj_interval))
         ax.set_xticklabels(labels=["%02d:00" % i for i in range(0, 24, 3)],
                            rotation=90)
+        # ax.set_yticklabels([str(round(i/60, 2)) for i in ax.get_yticks()])
         ax.tick_params(axis='both', which='major', labelsize=14)
         ax.tick_params(axis='both', which='minor', labelsize=10)
         plt.grid(True, which='both')
