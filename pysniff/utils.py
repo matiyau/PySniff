@@ -112,7 +112,7 @@ def pcap_dir_to_pickle(in_dir_path, out_file_path=None, out_dir_path=None,
         out_file_path = None
 
 
-def pickle_to_df(pickle_file_path):
+def pickle_file_to_df(pickle_file_path):
     """
     Read a dataframe from a pickle file.
 
@@ -125,3 +125,30 @@ def pickle_to_df(pickle_file_path):
 
     """
     return pd.read_pickle(pickle_file_path, compression="gzip")
+
+
+def pickle_dir_to_dfs(pickle_dir_path):
+    """
+    Read a dataframes from all pickle files in a directory.
+
+    Args:
+        pickle_dir_path (str): Path of the directory containing the pickle
+        files.
+
+    Returns:
+        dict:
+            Dataframes of device details from all pickle files.
+            Dictionary keys are strings specifying the file name. Their
+            corresponding values are of type 'pandas.DataFrame'
+
+    """
+    dfs = {}
+    for item in os.listdir(pickle_dir_path):
+        pickle_file_path = os.path.join(pickle_dir_path, item)
+        if not os.path.isfile(pickle_file_path):
+            continue
+        df = pd.read_pickle(pickle_file_path, compression="gzip")
+        if (df.empty):
+            continue
+        dfs[item] = df
+    return dfs
