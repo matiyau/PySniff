@@ -123,7 +123,7 @@ def check(logs_dir_path=None):
         tuple:
             Tuple containing name of the interface selected for sniffing and
             path of the logs directory. If a custom path is supplied to the
-            function, the same path is returned. If not supplied,
+            function, the same path is returned. Otherwise,
             the default path is returned.
 
     """

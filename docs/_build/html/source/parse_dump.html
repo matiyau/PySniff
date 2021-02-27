@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="system module" href="system.html" />
+    <link rel="next" title="plot module" href="plot.html" />
     <link rel="prev" title="interface module" href="interface.html" /> 
 </head>
 
@@ -94,6 +94,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">pysniff</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="interface.html">interface module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">parse_dump module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot.html">plot module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system.html">system module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
 </ul>
@@ -174,11 +175,11 @@
 <p>&#64;author: Nishad Mandlik</p>
 <dl class="py class">
 <dt id="parse_dump.Dump">
-<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">Dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">Dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt id="parse_dump.Dump.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_paths</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.Dump.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generic interface for parsing multiple WireShark capture files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -242,11 +243,11 @@ discarded.</p>
 
 <dl class="py class">
 <dt id="parse_dump.DumpDir">
-<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpDir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpDir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#parse_dump.Dump" title="parse_dump.Dump"><code class="xref py py-class docutils literal notranslate"><span class="pre">parse_dump.Dump</span></code></a></p>
 <dl class="py method">
 <dt id="parse_dump.DumpDir.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpDir.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Interface for parsing WireShark capture files from the same directory.</p>
 </div></blockquote>
@@ -292,11 +293,11 @@ capture directory.</p>
 
 <dl class="py class">
 <dt id="parse_dump.DumpFile">
-<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">parse_dump.</code><code class="sig-name descname">DumpFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#parse_dump.Dump" title="parse_dump.Dump"><code class="xref py py-class docutils literal notranslate"><span class="pre">parse_dump.Dump</span></code></a></p>
 <dl class="py method">
 <dt id="parse_dump.DumpFile.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 70</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em>, <em class="sig-param"><span class="n">min_rssi</span><span class="o">=</span><span class="default_value">- 65</span></em><span class="sig-paren">)</span><a class="reference external" href="https://gitlab.ewi.tudelft.nl/et4394/2020-2021/wn-group-08/-/tree/master/pysniff/parse_dump.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parse_dump.DumpFile.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>Interface for parsing a single WireShark capture files.</p>
 </div></blockquote>
@@ -322,7 +323,7 @@ discarded. Defaults to -70.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="system.html" class="btn btn-neutral float-right" title="system module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot.html" class="btn btn-neutral float-right" title="plot module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="interface.html" class="btn btn-neutral float-left" title="interface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

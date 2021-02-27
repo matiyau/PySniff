@@ -6,5 +6,6 @@ pysniff
 
    interface
    parse_dump
+   plot
    system
    utils

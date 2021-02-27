@@ -22,7 +22,7 @@ _READ_FILT = "((wlan.fc.type_subtype==40 && !wlan.da==wlan.staa) || \
 
 
 class Dump():
-    def __init__(self, file_paths, min_rssi=-70):
+    def __init__(self, file_paths, min_rssi=-65):
         """
         Generic interface for parsing multiple WireShark capture files.
 
@@ -146,7 +146,7 @@ class Dump():
 
 
 class DumpFile(Dump):
-    def __init__(self, file_path, min_rssi=-70):
+    def __init__(self, file_path, min_rssi=-65):
         """
         Interface for parsing a single WireShark capture files.
 
@@ -165,7 +165,7 @@ class DumpFile(Dump):
 
 
 class DumpDir(Dump):
-    def __init__(self, dir_path, min_rssi=-70):
+    def __init__(self, dir_path, min_rssi=-65):
         """
         Interface for parsing WireShark capture files from the same directory.
 
