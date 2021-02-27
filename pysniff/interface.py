@@ -15,11 +15,11 @@ from pysniff import system
 class IF():
     def __init__(self, if_name, log_dir_path):
         """
-        Class for the interface which is ot be used for sniffing.
+        Class for the interface which is to be used for sniffing.
 
         Args:
             if_name (str): Name of the wireless interface.
-                log_dir_path (str): Path of the directory to store logs.
+            log_dir_path (str): Path of the directory to store logs.
 
         Returns:
             None.
