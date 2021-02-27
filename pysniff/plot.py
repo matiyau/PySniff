@@ -144,5 +144,38 @@ def plot_activity(dfs):
                             wspace=0.2)
 
 
-def plot_request_subtypes(dfs):
-    pass
+def plot_probe_detection_share(dfs):
+    """
+    Plot pie-chart of percentage of devices detected without any probe request
+    and that of devices detected with at least one probe request
+
+    Args:
+        dfs (dict): Dataframes of device details.
+            Dictionary keys are strings specifying the file name. Their
+            corresponding values are of type 'pandas.DataFrame'.
+
+    Returns:
+        None.
+
+    """
+    for (loc, df) in dfs.items():
+        total_devs = len(df)
+        non_probes = 0
+        for i in df["Frame Subtypes"]:
+            if 4 not in i:
+                non_probes += 1
+        fig = plt.figure()  # create a figure object
+        ax = fig.add_subplot(1, 1, 1)
+        packet_labs = ["Probe Request", "Other"]
+        wedges, texts, autotexts = ax.pie([total_devs - non_probes,
+                                           non_probes],
+                                          labels=packet_labs,
+                                          startangle=90,
+                                          colors=["tab:green", "tab:red"],
+                                          autopct="%1.1f%%",
+                                          pctdistance=0.82,
+                                          labeldistance=1.05)
+        ax.set_title("Means of Device Detection at\n" + loc, fontweight="bold")
+        plt.setp(autotexts, size=10, weight="bold")
+        plt.setp(texts, size=10, weight="bold")
+        plt.show()
