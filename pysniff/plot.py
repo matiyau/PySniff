@@ -11,10 +11,8 @@ import numpy as np
 import operator
 import pandas as pd
 
-_COMMON_VENDORS = ["Samsung", "Motorola", "MediaTek", "Huawei", "Apple",
-                   "Murata", "Intel", "OnePlus",  "Xiaomi"]
-
-# LG, Sony, Panasonic, Google, RealMe
+_COMMON_VENDORS = ["Apple", "Huawei", "Google", "Intel", "MediaTek", "LG", "Motorola", "Murata",
+                   "OnePlus", "Panasonic", "Samsung", "Sony", "Xiaomi"]
 
 
 def plot_mac_stats(dfs):
@@ -76,12 +74,18 @@ def plot_mac_stats(dfs):
 
     fig = plt.figure()  # create a figure object
     ax = fig.add_subplot(1, 1, 1)
-    vendor_counts.pop("Unknown", None)
-    other_count = vendor_counts.pop("Other")
+    unknown_count = vendor_counts.pop("Unknown", 0)
+    other_count = vendor_counts.pop("Other", 0)
     vendor_counts = dict(sorted(vendor_counts.items(),
                                 key=operator.itemgetter(1), reverse=True))
+    vendor_counts_tmp = {}
+    for (k, v) in vendor_counts.items():
+        if (v/(devices_count-rand_count-unknown_count) > 0.03):
+            vendor_counts_tmp[k] = v
+        else:
+            other_count += v
+    vendor_counts = vendor_counts_tmp
     vendor_counts["Other"] = other_count
-    mac_stats_labs = ["Randomized", "Vendor Unknown", "Vendor Identified"]
     wedges, texts, autotexts = ax.pie(list(vendor_counts.values()),
                                       labels=list(vendor_counts.keys()),
                                       startangle=90,
