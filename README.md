@@ -53,3 +53,6 @@ python3 generate_pickles.py
 ```bash
 python3 analyse.py
 ```
+
+### Report
+The LaTeX source and pdf version of the report can be found in the [report](./report) directory.

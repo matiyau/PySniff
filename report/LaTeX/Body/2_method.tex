@@ -1,0 +1,16 @@
+\section{Method}
+
+WiFi devices are capable of measuring RSSI values for every received packet. This value is indicative of the power of the received signal and can be used to understand the proximity between the transmitter and receiver. We filter out sniffed packets by setting a threshold on the RSSI value, in order to detect the WiFi devices in the surroundings. Devices are identified using the transmitter MAC addresses from the captured frames. Existing work in this field deals with analysing only probe request frames sent during a WiFi scan. For non-associated stations, this is a reasonable method. However, for associated stations, our preliminary investigation showed that the frequency of probe requests highly depends on the network manager software. Thus, the sniffer may not be able to discover such a device, by capturing only probe requests. We therefore focus on all frame types which are transmitted only by a WiFi station (e.g. Probe Requests, Association Requests, QoS Null Function Messages, etc.). \cite{noauthor_802.11_2010} We discard frames like Beacons, Probe Responses and Association Responses, which are obviously emitted by Access Points. Based on this method, we formulate our hypothesis and limitations as follows:
+
+\subsection{Hypothesis}
+\begin{itemize}
+    \item The number of detected MAC addresses should reflect the human activity at the corresponding time and location.
+    \item Probe requests alone are not sufficient to detect the presence of a WiFi station.
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item Devices with WiFi radio disabled, or those operating in mobile-hotspot mode will not be detected.
+    \item If MAC address randomization is enabled, devices may use different MAC addresses for probe and association requests, causing false detections.
+    \item Stations which are not associated to an access point will be detected only if they perform active scanning (i.e emit probe requests). Although passive scanning is uncommon, a small minority of applications on older operating systems may employ this technique.\cite{lockwood_a5ec95cdb1a7d2024249277dff1f99d0046c9b56_nodate}
+\end{itemize}

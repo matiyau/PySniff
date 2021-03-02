@@ -1,0 +1,74 @@
+\documentclass[conference]{IEEEtran}
+
+\ifCLASSINFOpdf
+
+\else
+
+\fi
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=0.79in]{geometry}
+\usepackage{lastpage}
+\usepackage[compact]{titlesec}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{listings}
+\usetikzlibrary{fit}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{graphbox}
+% \usepackage{todonotes}
+\usepackage{svg}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+
+\usepackage{biblatex}
+\addbibresource{citations.bib}
+
+% \titleformat{\section}[hang]{\bfseries\large}{\thesection}{0.5em}{}
+% \titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection}{0.5em}{}
+% \titleformat{\subsubsection}[runin]{\bfseries\normalsize}{\thesubsubsection}{0.5em}{}
+\providecommand{\keywords}[1]{\textbf{\textit{Key Words---}} #1}
+
+\newcommand{\appropto}{\mathrel{\vcenter{
+  \offinterlineskip\halign{\hfil$##$\cr
+    \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+
+\begin{document}
+
+\title{Estimating Human Presence through WiFi Packet Sniffing}
+\author{   
+    \IEEEauthorblockN{Koppány Levente Cserna}
+    \IEEEauthorblockA{
+    NetID: kcserna\\
+    Student No.: 5301378\\
+    Email: K.L.Cserna-1@student.tudelft.nl\vspace{-1cm}}
+\and 
+    \IEEEauthorblockN{Nishad Mandlik}
+    \IEEEauthorblockA{
+    NetID: nmandlik\\
+    Student No.: 5242541\\
+    Email: N.G.Mandlik@student.tudelft.nl}
+}
+\vspace{-1cm}
+\date{\today}
+
+\maketitle
+
+\begin{center}
+    \footnotesize{Report contains \pageref{LastPage} of maximum 4 pages.}
+\end{center}
+
+% \input{Body/0_abstract} 
+\IEEEpeerreviewmaketitle
+\input{Body/1_intro}     
+\input{Body/2_method}
+\input{Body/3_setup}
+\input{Body/4_results}
+\input{Body/5_conclusion}
+
+\printbibliography
+\end{document}
