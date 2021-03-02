@@ -1,6 +1,6 @@
 # ReadMe
 
-PySniff is a set of scripts for logging captured WLAN packets and runnung analysis on the detected MAC addresses.
+PySniff is a package for monitoring crowd activity through passive sniffing of WiFi packets.
 
 ## Info
 
