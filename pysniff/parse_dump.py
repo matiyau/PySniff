@@ -75,8 +75,13 @@ class Dump():
 
         for fp in self.fps:
             tmp_file = ".tmp_" + str(math.floor(dt.now().timestamp()))
+            # t = os.path.split(fp)
+            # tmp_dir = os.path.join("logs/pcap_filt/", os.path.split(t[0])[1])
+            # tmp_file = os.path.join(tmp_dir, t[1])
+            # os.system("mkdir -p '" + tmp_dir + "'")
             os.system("tshark -2 -R '" + self.rdfilt + "' -r '" + fp +
                       "' -w '" + tmp_file + "'")
+            # continue
             capt = pyshark.FileCapture(input_file=tmp_file, keep_packets=False)
             while True:
                 try:

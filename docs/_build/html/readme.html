@@ -99,6 +99,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#short-version">Short Version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#capture">Capture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#analysis">Analysis</a></li>
 </ul>
@@ -187,11 +188,19 @@
 </div>
 <div class="section" id="os-compatibility">
 <h3>OS Compatibility<a class="headerlink" href="#os-compatibility" title="Permalink to this headline">¶</a></h3>
-<p>Ubuntu</p>
+<p>Tested on Ubuntu 20.04 and 20.10</p>
 </div>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="short-version">
+<h3>Short Version<a class="headerlink" href="#short-version" title="Permalink to this headline">¶</a></h3>
+<p>To generate plots for <a class="reference external" href="../../../logs">already gathered data</a>, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 analyse.py
+</pre></div>
+</div>
+<p>More details on the usage can be found below.</p>
+</div>
 <div class="section" id="capture">
 <h3>Capture<a class="headerlink" href="#capture" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
@@ -214,7 +223,19 @@
 </div>
 <div class="section" id="analysis">
 <h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h3>
-<p>Not implemented yet</p>
+<ol class="arabic">
+<li><p>The pcap and pickled versions of the captured packets are stored in <a class="reference external" href="../../../logs/pcap_filt">logs/pcap_filt</a> and <a class="reference external" href="../../../logs/pickle">logs/pickle</a> directories.</p></li>
+<li><p>For generating pickles for files in a custom directory, edit the <em>IN_DIR</em> and <em>OUT_DIR</em> variables in <a class="reference external" href="../../../generate_pickles.py">generate_pickles.py</a> and run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 generate_pickles.py
+</pre></div>
+</div>
+</li>
+<li><p>In order to plot data for pickled files, edit the <em>PICKLE_DIR</em> variable in <a class="reference external" href="../../../analyse.py">analyse.py</a> and run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 analyse.py
+</pre></div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>

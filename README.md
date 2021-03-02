@@ -11,9 +11,17 @@ ET4394 - Wireless IoT & Local Area Networks
 8
 
 ### OS Compatibility
-Ubuntu
+Tested on Ubuntu 20.04 and 20.10
 
 ## Usage
+
+### Short Version
+To generate plots for [already gathered data](./logs), run the following command:
+```bash
+python3 analyse.py
+```
+
+More details on the usage can be found below. 
 
 ### Capture
 
@@ -34,5 +42,17 @@ python3 capture.py --help
 
 ### Analysis
 
-Not implemented yet
+1. The pcap and pickled versions of the captured packets are stored in [logs/pcap_filt](./logs/pcap_filt) and [logs/pickle](./logs/pickle) directories.
 
+2. For generating pickles for files in a custom directory, edit the *IN_DIR* and *OUT_DIR* variables in [generate_pickles.py](./generate_pickles.py) and run
+```bash
+python3 generate_pickles.py
+```
+
+3. In order to plot data for pickled files, edit the *PICKLE_DIR* variable in [analyse.py](./analyse.py) and run
+```bash
+python3 analyse.py
+```
+
+### Report
+The LaTeX source and pdf version of the report can be found in the [report](./report) directory.

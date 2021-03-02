@@ -11,10 +11,8 @@ import numpy as np
 import operator
 import pandas as pd
 
-_COMMON_VENDORS = ["Samsung", "Motorola", "MediaTek", "Huawei", "Apple",
-                   "Murata", "Intel", "OnePlus",  "Xiaomi"]
-
-# LG, Sony, Panasonic, Google, RealMe
+_COMMON_VENDORS = ["Apple", "Huawei", "Google", "Intel", "MediaTek", "LG", "Motorola", "Murata",
+                   "OnePlus", "Panasonic", "Samsung", "Sony", "Xiaomi"]
 
 
 def plot_mac_stats(dfs):
@@ -76,12 +74,18 @@ def plot_mac_stats(dfs):
 
     fig = plt.figure()  # create a figure object
     ax = fig.add_subplot(1, 1, 1)
-    vendor_counts.pop("Unknown", None)
-    other_count = vendor_counts.pop("Other")
+    unknown_count = vendor_counts.pop("Unknown", 0)
+    other_count = vendor_counts.pop("Other", 0)
     vendor_counts = dict(sorted(vendor_counts.items(),
                                 key=operator.itemgetter(1), reverse=True))
+    vendor_counts_tmp = {}
+    for (k, v) in vendor_counts.items():
+        if (v/(devices_count-rand_count-unknown_count) > 0.03):
+            vendor_counts_tmp[k] = v
+        else:
+            other_count += v
+    vendor_counts = vendor_counts_tmp
     vendor_counts["Other"] = other_count
-    mac_stats_labs = ["Randomized", "Vendor Unknown", "Vendor Identified"]
     wedges, texts, autotexts = ax.pie(list(vendor_counts.values()),
                                       labels=list(vendor_counts.keys()),
                                       startangle=90,
@@ -125,7 +129,7 @@ def plot_activity(dfs):
         ax.hist(sample_times, bins=np.arange(0, 1441, min_interval))
         ax.set_xlabel('Time [hh:mm]', fontsize='18')
         ax.set_ylabel('No. of Devices', fontsize='18')
-        ax.set_title('Device Activity at \n' + loc, fontsize='20')
+        ax.set_title(loc, fontsize='20')
         # ax.legend(loc='lower right', fontsize=14)
         ax.set_xlim(0, 1440)
         ax.set_xticks([i for i in range(0, 1440, min_interval)
@@ -175,7 +179,7 @@ def plot_probe_detection_share(dfs):
                                           autopct="%1.1f%%",
                                           pctdistance=0.82,
                                           labeldistance=1.05)
-        ax.set_title("Means of Device Detection at\n" + loc, fontweight="bold")
+        ax.set_title(loc, fontweight="bold")
         plt.setp(autotexts, size=10, weight="bold")
         plt.setp(texts, size=10, weight="bold")
         plt.show()

@@ -1,0 +1,73 @@
+\section{Results and Evaluation}
+
+\subsection{Temporal analysis of WiFi activity}
+\autoref{fig:actv} shows the number of WiFi devices at various locations in a period of $24$ hours. The data collected at Delft Station (plots {a} and {b}) show that this number drops to zero at night, when no train services are plying. During weekdays (plot {a}), greater number of devices are detected during the peak commute times in the morning and evening. On weekends (plot {b}), a spike is observed before the start of night-time curfew (2100 hrs). A similar spike is also present in plot {c} (bicycle parking in a residential building). Plot {d} (residential building corridor) shows as compared to day-time, greater number of devices during the night, when most people are back in their apartments. It can also be observed that public places like train stations witness much WiFi activity compared to specific locations within a residential building. The mailbox room is not visited frequently, and the data gathered over there shows the least number of detected devices (plot {c}). Thus, according to our expectations the trends in the number of detected WiFi stations resemble crowd activity patterns at various locations.
+
+\subsection{Means of device detection}
+The means of device detection can be seen in \autoref{fig:means}. The green sector shows the percentage of devices for which at least one probe request was captured. The red sector shows the percentage of devices which are detected only due to frame types other than probe requests. It can be observed that for Scene 1 (\textit{Delft Station Bicycle Parking 1 (Weekday)}), our initial hypothesis fails. A negligible number of devices are detected without any probe request. The outcomes for Scenes 2, 3 and 5 are similar to those of Scene 1, and hence, are excluded. Scene 4 (\textit{Residential Building Corridor}), however, supports our hypothesis. Here, probe requests were not captured for a significant number of detected devices.\\
+\begin{figure}[h!]
+    \centering
+    \captionsetup[subfigure]{justification=centering}
+    \captionsetup{justification=centering}
+    \begin{subfigure}{0.5\textwidth}
+        \includesvg[width=1.1\linewidth]{Body/figures/means_scene1.svg}
+        \caption{Delft Station Bicycle Parking 1\\(Weekday)}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includesvg[width=1.1\linewidth]{Body/figures/means_scene4.svg}
+        \caption{Residential Building Corridor}
+    \end{subfigure}
+    \caption{Statistics of the means of device detection}
+    \label{fig:means}
+\end{figure}
+
+This behaviour can attributed to the association status of devices. In Scene 4, it is likely that several devices were connected to the home networks of users, and hence, transmitted lesser number of probe requests. Other scenes included areas having no open WiFi networks. In such a setting, devices perform scanning at more frequent intervals, thus increasing the odds of probe request based detection.
+
+\begin{figure*}[h!]
+    \centering
+    \captionsetup[subfigure]{justification=centering}
+    \captionsetup{justification=centering}
+    \begin{subfigure}{0.48\textwidth}
+        \includesvg[width=1\linewidth]{Body/figures/actv_scene1.svg}
+        \caption{Delft Station Bicycle Parking 1\\(Weekday)}
+        \vspace*{5mm}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{0.48\textwidth}
+        \includesvg[width=1\linewidth]{Body/figures/actv_scene2.svg}
+        \caption{Delft Station Bicycle Parking 1\\(Weekend)}
+        \vspace*{5mm}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includesvg[width=1\linewidth]{Body/figures/actv_scene3.svg}
+        \caption{Residential Building Bicycle Parking}
+        \vspace*{5mm}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{0.48\textwidth}
+        \includesvg[width=1\linewidth]{Body/figures/actv_scene4.svg}
+        \caption{Residential Building Corridor}
+        \vspace*{5mm}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \includesvg[width=1\linewidth]{Body/figures/actv_scene5.svg}
+        \caption{Residential Building Mailbox Room}
+        \vspace*{5mm}
+    \end{subfigure}
+    \caption{Number of detected devices in a period of $24$ hours.\\(\textit{For Scene 4, the data for the interval 17:30 to 18:00 was lost.)}}
+    \label{fig:actv}
+\end{figure*}
+
+\subsection{MAC address randomization}
+
+For randomized MAC addresses, the second most significant nibble is set to $2$, $6$, $A$ or $E$.\cite{purvis_get_2020} \autoref{fig:vendor_stats} (top) shows the statistics of MAC addresses randomization across devices detected from all the scenes. It can be seen that a vast majority of devices use randomized MAC addresses. Vendor lookup succeeded for only a small fraction of the MAC addresses, the results of which are shown in \autoref{fig:vendor_stats}(bottom). The \textit{Python} package \textit{mac-vendor-lookup} was used for this purpose. It should be noted that these percentages do not necessarily portray the market share of vendors. A greater number of devices of a particular vendor, in the captured data, may also be due to address randomization being disabled on those devices.
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[width=1.1\linewidth]{Body/figures/vendor_lookup.svg}
+    \includesvg[width=1.1\linewidth]{Body/figures/vendor_share.svg}
+    \caption{Lookup results for MAC addresses from all scenes.}
+    \label{fig:vendor_stats}
+\end{figure}
+
+\subsection{Power Consumption}
+
+When the USB power meter was attached in series between the WiFi adapter and the USB port of the Raspberry Pi, it did not display any readings for current consumption. However, it was able to measure the consumption for the entire system, when attached between the power source and the Raspberry Pi. With the WiFi adapter detached, the Pi was found to consume a current of $0.38A$ at a voltage of $5.18V$. When the adapter was attached the current consumption increased to $0.52A$. The least count of the meter used is $0.01A$, and probably differences due to mode setting (managed/monitor) or turning sniffing on/off were too small to be detected by the measuring device.

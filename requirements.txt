@@ -1,3 +1,9 @@
-get_mac==0.8.2
+matplotlib==3.3.3
+mac_vendor_lookup==0.1.11
+nest_asyncio==1.5.1
+pandas==1.2.1
+numpy==1.19.5
 pygit2==1.5.0
+pyshark==0.4.3
 getmac==0.8.2
+python_dateutil==2.8.1
