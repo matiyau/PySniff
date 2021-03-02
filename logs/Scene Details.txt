@@ -1,5 +1,5 @@
-Scene 1: Delft Station Bicycle Parking 3 (Weekday)
-Scene 2: Delft Station Bicycle Parking 3 (Weekend)
+Scene 1: Delft Station Bicycle Parking 1 (Weekday)
+Scene 2: Delft Station Bicycle Parking 1 (Weekend)
 Scene 3: Residential Building Bicycle Parking
 Scene 4: Residential Building Corridor
 Scene 5: Residential Building Mailbox Room

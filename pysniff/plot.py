@@ -129,7 +129,7 @@ def plot_activity(dfs):
         ax.hist(sample_times, bins=np.arange(0, 1441, min_interval))
         ax.set_xlabel('Time [hh:mm]', fontsize='18')
         ax.set_ylabel('No. of Devices', fontsize='18')
-        ax.set_title('Device Activity at \n' + loc, fontsize='20')
+        ax.set_title(loc, fontsize='20')
         # ax.legend(loc='lower right', fontsize=14)
         ax.set_xlim(0, 1440)
         ax.set_xticks([i for i in range(0, 1440, min_interval)
@@ -179,7 +179,7 @@ def plot_probe_detection_share(dfs):
                                           autopct="%1.1f%%",
                                           pctdistance=0.82,
                                           labeldistance=1.05)
-        ax.set_title("Means of Device Detection at\n" + loc, fontweight="bold")
+        ax.set_title(loc, fontweight="bold")
         plt.setp(autotexts, size=10, weight="bold")
         plt.setp(texts, size=10, weight="bold")
         plt.show()
