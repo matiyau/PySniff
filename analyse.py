@@ -9,7 +9,9 @@ Created on Sat Feb 27 13:45:34 2021
 import pysniff.utils as pu
 import pysniff.plot as pp
 
-dfs = pu.pickle_dir_to_dfs("./logs/pickle")
+PICKLE_DIR = "./logs/pickle"
+
+dfs = pu.pickle_dir_to_dfs(PICKLE_DIR)
 # dfs = {"Delft Station Cycle Stand":
 #        pu.pickle_file_to_df("./logs/pickle/Delft Station Cycle Stand")}
 # dfs = {"Residential Building Corridor":
